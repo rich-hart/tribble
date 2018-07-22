@@ -8,16 +8,17 @@ import cv2
 import cv
 #FIXME: alpha conditional stmt
 def merge_imgs(img1,img2):
-    rows,cols,channels = img2.shape
-    
+    rows,cols,channels_1 = img1.shape
+    rows,cols,channels_2 = img2.shape
+
     for i in range(0,rows):
         for j in range(0,cols):
-
-            img1[i,j,0] = img2[i,j,0]            
-            img1[i,j,1] = img2[i,j,1]            
-            img1[i,j,2] = img2[i,j,2]            
-            img1[i,j,3] = img2[i,j,3]            
-  
+            if channels_2==4 and img2[i,j,3]==255:
+                img1[i,j,0] = img2[i,j,0]            
+                img1[i,j,1] = img2[i,j,1]            
+                img1[i,j,2] = img2[i,j,2]            
+#            img1[i,j,3] = img2[i,j,3]            
+      
 def main(argv=None):
 #    import ipdb; ipdb.set_trace()
     parser = argparse.ArgumentParser(
