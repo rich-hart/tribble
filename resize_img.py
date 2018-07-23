@@ -17,7 +17,7 @@ OUTPUT = join(RESOURCE_DIR, 'merged_images.png')
 
    
 def main(argv=None):
-    import ipdb; ipdb.set_trace()
+#    import ipdb; ipdb.set_trace()
     parser = argparse.ArgumentParser(
         description='Return a list of related pages between two pdfs.')
     parser.add_argument('image', type=argparse.FileType('rb'))
