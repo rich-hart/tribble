@@ -29,7 +29,7 @@ def rgb_to_hsv(r, g, b):
 
 
 GREEN_RANGE_MIN_HSV = (100, 80, 70)
-GREEN_RANGE_MAX_HSV = (185, 255, 255)
+GREEN_RANGE_MAX_HSV = (185, 255, 150)
 
 def main():
     # Load image and convert it to RGBA, so it contains alpha channel

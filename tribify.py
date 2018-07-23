@@ -48,7 +48,7 @@ def tempdir():
         yield dirpath
 
 def main(argv=None):
-    import ipdb; ipdb.set_trace()
+#    import ipdb; ipdb.set_trace()
     parser = argparse.ArgumentParser(
         description='Return a list of related pages between two pdfs.')
     parser.add_argument('fan_picture', type=argparse.FileType('rb'))
@@ -65,8 +65,8 @@ def main(argv=None):
 
     command = "python greenscreen_remove.py /vagrant/src/tribble/resized_img.png"
     subprocess.call(command.split(' '))
-
-    command = "python merge_layers.py /vagrant/src/tribble/WALL.jpg /vagrant/src/tribble/TRIBBS_ON_BOTTOM.png /vagrant/src/tribble/resized_img.png /vagrant/src/tribble/TRIBBS_ON_TOP.png /vagrant/src/tribble/RAINBOW_BORDER.png /vagrant/src/tribble/GIS_LOGO.png --output /vagrant/src/tribble/merged_img.png"
+    
+    command = "python merge_layers.py /vagrant/src/tribble/WALL.jpg /vagrant/src/tribble/TRIBBS_ON_BOTTOM.png /vagrant/src/tribble/resized_img.png /vagrant/src/tribble/TRIBBS_ON_TOP.png /vagrant/src/tribble/RAINBOW_BORDER.png /vagrant/src/tribble/GIS_LOGO.png --output /vagrant/src/tribble/tribified_{}.png".format(basename(settings['fan_picture'].name).split('.')[0])
 
     subprocess.call(command.split(' '))
     
