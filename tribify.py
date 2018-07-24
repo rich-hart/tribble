@@ -57,12 +57,17 @@ def main(argv=None):
     settings = vars(args)
 #    with tempdir() as temp_dir:
 #        pass
-    command = "python convert_img.py {} " \
-              "--output /vagrant/src/tribble/converted_img.png".format(settings['fan_picture'].name).strip()
-    subprocess.call(command.split(' ')) 
-    command = "python resize_img.py /vagrant/src/tribble/converted_img.png --output /vagrant/src/tribble/resized_img.png"  
-    subprocess.call(command.split(' ')) 
-
+    if '.C2R' in settings['fan_picture'].name:
+    
+        command = "python convert_img.py {} " \
+                  "--output /vagrant/src/tribble/converted_img.png".format(settings['fan_picture'].name).strip()
+        subprocess.call(command.split(' ')) 
+        command = "python resize_img.py /vagrant/src/tribble/converted_img.png --output /vagrant/src/tribble/resized_img.png"  
+        subprocess.call(command.split(' ')) 
+    else:
+        command = "python resize_img.py /vagrant/src/tribble/{} --output /vagrant/src/tribble/resized_img.png".format(settings['fan_picture'].name)
+        subprocess.call(command.split(' ')) 
+       
     command = "python greenscreen_remove.py /vagrant/src/tribble/resized_img.png"
     subprocess.call(command.split(' '))
     
