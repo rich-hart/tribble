@@ -6,7 +6,7 @@ Usage: python greenscreen_remove.py image.jpg
 from PIL import Image
 import sys
 import os
-
+import argparse
 
 def rgb_to_hsv(r, g, b):
     maxc = max(r, g, b)
@@ -28,12 +28,26 @@ def rgb_to_hsv(r, g, b):
     return h, s, v
 
 
-GREEN_RANGE_MIN_HSV = (100, 80, 70)
-GREEN_RANGE_MAX_HSV = (185, 255, 150)
 
-def main():
+
+def main(argv=None):
     # Load image and convert it to RGBA, so it contains alpha channel
-    file_path = sys.argv[1]
+    parser = argparse.ArgumentParser(
+        description='Return a list of related pages between two pdfs.')
+    parser.add_argument('file_path', type=argparse.FileType('rb'))
+    parser.add_argument('-min_h', '--min_hue', type=int, default=100)
+    parser.add_argument('-min_s', '--min_saturation', type=int, default=80)
+    parser.add_argument('-min_v', '--min_value', type=int, default=70)
+    parser.add_argument('-max_h', '--max_hue', type=int, default=185)
+    parser.add_argument('-max_s', '--max_saturation', type=int, default=255)
+    parser.add_argument('-max_v', '--max_value', type=int, default=190)
+
+#    parser.add_argument('--output', type=argparse.FileType('wb+'))
+    args = parser.parse_args(argv)
+    settings = vars(args)
+    GREEN_RANGE_MIN_HSV = (settings['min_hue'], settings['min_saturation'], settings['min_value'])
+    GREEN_RANGE_MAX_HSV = (settings['max_hue'], settings['max_saturation'], settings['max_value'])
+    file_path = settings['file_path'].name
     name, ext = os.path.splitext(file_path)
     im = Image.open(file_path)
     im = im.convert('RGBA')
