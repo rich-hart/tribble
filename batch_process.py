@@ -4,7 +4,7 @@ import argparse
 BASE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),'tribble')
 
 def main(argv=None):
-    import ipdb; ipdb.set_trace()
+#    import ipdb; ipdb.set_trace()
     parser = argparse.ArgumentParser(
         description='Return a list of related pages between two pdfs.')
     parser.add_argument('-min_h', '--min_hue', type=int, default=100)
