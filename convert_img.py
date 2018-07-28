@@ -21,10 +21,13 @@ def main(argv=None):
     args = parser.parse_args(argv)
     settings = vars(args)
 #    img = cv2.imread(settings['image'].name)
-    raw = rawpy.imread(settings['image'].name)
-    rgb = raw.postprocess()
-    imageio.imsave(settings['output'].name, rgb)    
-
+    if '.cr2' in settings['image'].name.lower():
+        raw = rawpy.imread(settings['image'].name)
+        rgb = raw.postprocess()
+        imageio.imsave(settings['output'].name, rgb)    
+    elif '.jpg' in settings['image'].name.lower():
+        img = cv2.imread(settings['image'].name)
+        cv2.imwrite(settings['output'].name, img)
     return settings
 
 

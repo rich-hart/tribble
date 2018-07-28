@@ -18,7 +18,7 @@ def main(argv=None):
 
 
     for filename in os.listdir(BASE_DIR):
-        if '.CR2' in filename:
+        if '.cr2' in filename.lower() or '.jpg' in filename.lower():
             outfile = os.path.basename(filename).split('.')[0]
             command = "python convert_img.py /vagrant/src/tribble/{0} " \
                           "--output /vagrant/src/tribble/converted_{1}.png".format(filename,outfile)
