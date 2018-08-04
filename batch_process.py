@@ -27,6 +27,10 @@ def main(argv=None):
             for k,v in settings.items():
                 command = command + " --{0} {1} ".format(k,v)
             subprocess.call([ a for a in command.split(' ') if a]) 
+
+            command = "python resize_img.py /vagrant/src/tribble/converted_{0}.png --output /vagrant/src/tribble/resized_{0}.png".format(outfile)
+            subprocess.call([ a for a in command.split(' ') if a]) 
+
     return None
 
 if __name__ == "__main__":

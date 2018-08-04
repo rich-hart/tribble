@@ -26,7 +26,7 @@ def main(argv=None):
     args = parser.parse_args(argv)
     settings = vars(args)
 
-    img = cv2.imread(settings['image'].name)
+    img = cv2.imread(settings['image'].name,-1)
     resized_img = cv2.resize(img, (2100,1500))
     cv2.imwrite(settings['output'].name, resized_img)
     return settings
