@@ -31,6 +31,15 @@ def main(argv=None):
             command = "python resize_img.py /vagrant/src/tribble/converted_{0}.png --output /vagrant/src/tribble/resized_{0}.png".format(outfile)
             subprocess.call([ a for a in command.split(' ') if a]) 
 
+            command = "python merge_layers.py /vagrant/src/tribble/WALL.png "\
+                      "/vagrant/src/tribble/BACK_TRIBBLES.png " \
+                      "/vagrant/src/tribble/resized_{0}.png /vagrant/src/tribble/FRONT_TRIBBLES.png " \
+                      "/vagrant/src/tribble/LOGO.png " \
+                      "/vagrant/src/tribble/DATE.png " \
+                      "/vagrant/src/tribble/BORDER.png " \
+                      "--output /vagrant/src/tribble/merged_{0}.png".format(outfile)
+            subprocess.call([ a for a in command.split(' ') if a]) 
+
     return None
 
 if __name__ == "__main__":
