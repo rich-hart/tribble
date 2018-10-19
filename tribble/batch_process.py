@@ -6,10 +6,10 @@ BASE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__
 def main(argv=None):
 #    import ipdb; ipdb.set_trace()
     parser = argparse.ArgumentParser(
-        description='Return a list of related pages between two pdfs.')
+        description='Add star trek effects to a blue screen image')
     parser.add_argument('-min_h', '--min_hue', type=int, default=200)
-    parser.add_argument('-min_s', '--min_saturation', type=int, default=80)
-    parser.add_argument('-min_v', '--min_value', type=int, default=20)
+    parser.add_argument('-min_s', '--min_saturation', type=int, default=0)
+    parser.add_argument('-min_v', '--min_value', type=int, default=0)
     parser.add_argument('-max_h', '--max_hue', type=int, default=280)
     parser.add_argument('-max_s', '--max_saturation', type=int, default=255)
     parser.add_argument('-max_v', '--max_value', type=int, default=190)
