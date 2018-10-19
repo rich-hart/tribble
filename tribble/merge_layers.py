@@ -5,7 +5,7 @@ import argparse
 import json
 import numpy
 import cv2
-import cv
+
 #FIXME: alpha conditional stmt
 def merge_imgs(img1,img2):
     rows,cols,channels_1 = img1.shape

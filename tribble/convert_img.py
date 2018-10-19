@@ -5,7 +5,6 @@ import argparse
 import json
 import numpy
 import cv2
-import cv
 
 import rawpy
 import imageio

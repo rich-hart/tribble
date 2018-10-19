@@ -5,7 +5,6 @@ import argparse
 import json
 import numpy
 import cv2
-import cv
 DATA_DIR = join(dirname(realpath(__file__)),'data')
 RESOURCE_DIR = join(DATA_DIR,'resources')
 FAN_PICTURE = os.path.join(RESOURCE_DIR, 'FAN-PIC.png')
