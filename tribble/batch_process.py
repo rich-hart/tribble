@@ -31,14 +31,14 @@ def main(argv=None):
             command = "python {0}/resize_img.py converted_{1}.png --output resized_{1}.png".format(BASE_DIR, outfile)
             subprocess.call([ a for a in command.split(' ') if a]) 
 
-            command = "python {0}/merge_layers.py {0}/WALL.png "\
+            command = "python {0}/merge_layers.py " \
+                      "{0}/WALL.png "\
                       "{0}/BACK_TRIBBLES.png " \
                       "resized_{1}.png " \
-                      "{0}/FRONT_TRIBBLES.png " \
                       "{0}/LOGO.png " \
-                      "{0}/DATE.png " \
+                      "{0}/PHRASE.png " \
                       "{0}/BORDER.png " \
-                      "--output merged_{1}.png".format(BASE_DIR,outfile)
+                      "--output tribified_{1}.png".format(BASE_DIR,outfile)
             subprocess.call([ a for a in command.split(' ') if a]) 
 
     return None
