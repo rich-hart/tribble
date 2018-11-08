@@ -6,21 +6,21 @@ import json
 import numpy
 import cv2
 
-#FIXME: alpha conditional stmt
 def merge_imgs(img1,img2):
+
     rows,cols,channels_1 = img1.shape
     rows,cols,channels_2 = img2.shape
 
     for i in range(0,rows):
         for j in range(0,cols):
-            if channels_2==4 and img2[i,j,3]==255:
-                img1[i,j,0] = img2[i,j,0]            
-                img1[i,j,1] = img2[i,j,1]            
-                img1[i,j,2] = img2[i,j,2]            
-#            img1[i,j,3] = img2[i,j,3]            
+            if channels_2==4:
+                img1[i,j,0] = int(img1[i,j,0] * (1.0-float(img2[i,j,3])/255.0) + img2[i,j,0] * (float(img2[i,j,3])/255.0)) 
+                img1[i,j,1] = int(img1[i,j,1] * (1.0-float(img2[i,j,3])/255.0) + img2[i,j,1] * (float(img2[i,j,3])/255.0))    
+                img1[i,j,2] = int(img1[i,j,2] * (1.0-float(img2[i,j,3])/255.0) + img2[i,j,2] * (float(img2[i,j,3])/255.0))        
+
+
       
 def main(argv=None):
-#    import ipdb; ipdb.set_trace()
     parser = argparse.ArgumentParser(
         description='Return a list of related pages between two pdfs.')
     parser.add_argument('layers', type=str,  nargs='+')
